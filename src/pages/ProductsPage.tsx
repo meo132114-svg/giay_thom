@@ -193,7 +193,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { img: IMAGES.sneakersWhite, name: 'Giày Thể Thao', tag: 'Chạy bộ, gym' },
+              { img: "/giaythe.jpg", name: 'Giày Thể Thao', tag: 'Chạy bộ, gym' },
               { img: "/giay.jpg", name: 'Giày Học Sinh', tag: 'Đi học hàng ngày' },
               { img: "/giayda.jpg", name: 'Giày Da', tag: 'Đi làm, sự kiện' },
             ].map((p) => (
