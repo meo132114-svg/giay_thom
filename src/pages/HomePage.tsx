@@ -12,7 +12,6 @@ import {
   AlertTriangle,
 } from 'lucide-react';
 import { IMAGES, PROBLEMS, type PageId } from '@/content';
-import CtaButtons from '@/components/CtaButtons';
 import SectionHeading from '@/components/SectionHeading';
 import PageNav from '@/components/PageNav';
 
@@ -59,9 +58,6 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 quả và mang lại hương thơm dễ chịu. Tối ưu cho học sinh, sinh
                 viên, người chơi thể thao và người thường xuyên mang giày kín.
               </p>
-              <div className="mt-8">
-                <CtaButtons size="lg" />
-              </div>
               <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
                 {highlights.map((h) => (
                   <div

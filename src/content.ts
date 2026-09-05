@@ -1,5 +1,11 @@
-export const SHOPEE_URL = 'https://shopee.vn';
-export const TIKTOK_URL = 'https://shop.tiktok.com';
+export const CONTACT = {
+  email: 'giaythom2026@gmail.com',
+  phone: '0909273234',
+  address: 'Số 7 Nguyễn Thị Sóc, ấp Bắc Lân, xã Bà Điểm, Thành phố Hồ Chí Minh',
+  facebook: 'https://www.facebook.com/share/1Gxdu16fPQ/',
+  tiktok: 'https://tiktok.com/@thaythomtho',
+  instagram: 'https://www.instagram.com/giaythom.08082026',
+};
 
 export type PageId = 'home' | 'story' | 'products' | 'benefits' | 'faq';
 

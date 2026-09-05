@@ -1,6 +1,5 @@
 import { Leaf, Heart, Recycle, Sparkles, Globe2, Wind, Target, Eye } from 'lucide-react';
 import { IMAGES } from '@/content';
-import CtaButtons from '@/components/CtaButtons';
 import SectionHeading from '@/components/SectionHeading';
 import PageNav from '@/components/PageNav';
 import type { PageId } from '@/content';
@@ -207,9 +206,6 @@ export default function StoryPage({ onNavigate }: StoryPageProps) {
                 </div>
               </div>
             ))}
-          </div>
-          <div className="mt-12 text-center">
-            <CtaButtons size="lg" />
           </div>
         </div>
       </section>

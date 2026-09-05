@@ -4,11 +4,9 @@ import {
   Sparkles,
   Flame,
   Check,
-  ShoppingBag,
   Wind,
 } from 'lucide-react';
 import { IMAGES, SCENTS, type PageId } from '@/content';
-import CtaButtons from '@/components/CtaButtons';
 import SectionHeading from '@/components/SectionHeading';
 import PageNav from '@/components/PageNav';
 
@@ -112,9 +110,6 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
             </li>
           ))}
         </ul>
-        <div className="mt-8">
-          <CtaButtons size="lg" />
-        </div>
       </div>
     </div>
   </div>
@@ -223,26 +218,6 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Shopping CTA */}
-      <section className="pb-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <div className="relative overflow-hidden rounded-5xl bg-gradient-to-br from-wood-500 to-wood-700 p-10 text-center text-cream-50 shadow-card sm:p-16">
-            <div className="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-eco-400/30 blur-2xl" />
-            <ShoppingBag className="mx-auto h-10 w-10 text-eco-300" />
-            <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl text-balance">
-              Bạn đã chọn được hương thơm ưa thích?
-            </h2>
-            <p className="mt-4 text-base text-cream-200">
-              Đặt hàng chính hãng ngay tại các gian hàng thương mại điện tử của
-              chúng tôi để nhận ưu đãi vận chuyển và voucher giảm giá.
-            </p>
-            <div className="mt-8 flex justify-center">
-              <CtaButtons size="lg" />
-            </div>
           </div>
         </div>
       </section>
