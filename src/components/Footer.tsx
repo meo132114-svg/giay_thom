@@ -1,4 +1,4 @@
-import { Wind, Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
 import { PAGES, CONTACT, type PageId } from '@/content';
 
 type FooterProps = {
@@ -19,8 +19,8 @@ export default function Footer({ onNavigate }: FooterProps) {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-wood-500 text-cream-50">
-                <Wind className="h-5 w-5" />
+              <div className="h-12 w-12 overflow-hidden rounded-full bg-cream-50 shadow-soft">
+                <img src="/logo.jpg" alt="Logo Giày Thơm" className="h-full w-full object-contain" />
               </div>
               <div>
                 <div className="font-display text-lg font-bold tracking-tight">

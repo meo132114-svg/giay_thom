@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Wind } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { PAGES, type PageId } from '@/content';
 
 type NavbarProps = {
@@ -36,8 +36,8 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
             className="group flex items-center gap-3"
             aria-label="Giày Thơm - Trang chủ"
           >
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-wood-500 text-cream-50 shadow-soft transition-transform group-hover:scale-110 group-hover:rotate-6">
-              <Wind className="h-5 w-5" />
+            <div className="relative h-10 w-10 overflow-hidden rounded-full bg-cream-50 shadow-soft transition-transform group-hover:scale-110 group-hover:rotate-3">
+              <img src="/logo.jpg" alt="Logo Giày Thơm" className="h-full w-full object-contain" />
             </div>
             <div className="text-left">
               <div className="font-display text-lg font-bold leading-none tracking-tight text-wood-700">

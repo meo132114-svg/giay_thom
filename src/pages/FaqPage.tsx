@@ -26,19 +26,42 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 export default function FaqPage({ onNavigate }: FaqPageProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [feedback, setFeedback] = useState<'success' | 'error' | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
-    const subject = encodeURIComponent(`[Liên hệ từ website] ${form.name}`);
-    const body = encodeURIComponent(
-      `Họ tên: ${form.name}\nEmail: ${form.email}\n\nNội dung:\n${form.message}`
-    );
-    window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
-    setSent(true);
-    setForm({ name: '', email: '', message: '' });
-    setTimeout(() => setSent(false), 6000);
+    if (!form.name || !form.email || !form.message || sending) return;
+
+    setSending(true);
+    setFeedback(null);
+
+    try {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service_id: 'service_7qd4nwj',
+          template_id: 'template_4v42z6g',
+          user_id: '_20psvaVwSAGks-8x',
+          template_params: {
+            from_name: form.name,
+            from_email: form.email,
+            reply_to: form.email,
+            message: form.message,
+            to_email: CONTACT.email,
+          },
+        }),
+      });
+
+      if (!response.ok) throw new Error('Email could not be sent');
+      setForm({ name: '', email: '', message: '' });
+      setFeedback('success');
+    } catch {
+      setFeedback('error');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -217,7 +240,7 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                 Gửi tin nhắn cho chúng tôi
               </h3>
               <p className="mt-2 text-sm text-ink-500">
-                Điền thông tin và bấm gửi — ứng dụng email trên máy của bạn sẽ mở sẵn nội dung gửi đến {CONTACT.email}.
+                Điền thông tin và bấm gửi — tin nhắn sẽ được chuyển thẳng đến {CONTACT.email}.
               </p>
               <div className="mt-6 space-y-5">
                 <div>
@@ -259,13 +282,18 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                     className="mt-2 w-full resize-none rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
                   />
                 </div>
-                <button type="submit" className="btn-eco w-full">
+                <button type="submit" disabled={sending} className="btn-eco w-full disabled:cursor-not-allowed disabled:opacity-60">
                   <Send className="h-4 w-4" />
-                  Gửi tin nhắn
+                  {sending ? 'Đang gửi...' : 'Gửi tin nhắn'}
                 </button>
-                {sent && (
+                {feedback === 'success' && (
                   <div className="animate-fadeIn rounded-2xl bg-eco-100 px-4 py-3 text-center text-sm font-semibold text-eco-700">
-                    Cảm ơn bạn! Ứng dụng email đã được mở để bạn hoàn tất việc gửi đến {CONTACT.email}.
+                    Tin nhắn đã được gửi đến {CONTACT.email}. Chúng tôi sẽ phản hồi sớm.
+                  </div>
+                )}
+                {feedback === 'error' && (
+                  <div className="animate-fadeIn rounded-2xl bg-red-50 px-4 py-3 text-center text-sm font-semibold text-red-700">
+                    Không thể gửi tin nhắn lúc này. Vui lòng thử lại sau.
                   </div>
                 )}
               </div>
