@@ -19,11 +19,17 @@ export default function Footer({ onNavigate }: FooterProps) {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3">
+<<<<<<< HEAD
               <img
                 src="/logo-removebg-preview.png"
                 alt="Logo Giày Thơm"
                 className="h-12 w-12 object-contain"
               />
+=======
+              <div className="h-12 w-12 overflow-hidden rounded-full bg-cream-50 shadow-soft">
+                <img src="/logo.jpg" alt="Logo Giày Thơm" className="h-full w-full scale-125 object-contain" />
+              </div>
+>>>>>>> 5b251c07e7f4b33f28338fc33e66b857b12ca908
               <div>
                 <div className="font-display text-lg font-bold tracking-tight">
                   GIÀY THƠM
