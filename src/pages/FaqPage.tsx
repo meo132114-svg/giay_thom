@@ -7,6 +7,7 @@ import {
   HelpCircle,
   Facebook,
   Instagram,
+  Send,
 } from 'lucide-react';
 import { FAQS, CONTACT, type PageId } from '@/content';
 import SectionHeading from '@/components/SectionHeading';
@@ -24,6 +25,21 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 
 export default function FaqPage({ onNavigate }: FaqPageProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.message) return;
+    const subject = encodeURIComponent(`[Liên hệ từ website] ${form.name}`);
+    const body = encodeURIComponent(
+      `Họ tên: ${form.name}\nEmail: ${form.email}\n\nNội dung:\n${form.message}`
+    );
+    window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
+    setSent(true);
+    setForm({ name: '', email: '', message: '' });
+    setTimeout(() => setSent(false), 6000);
+  };
 
   return (
     <div className="animate-fadeIn">
@@ -192,6 +208,68 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                 </a>
               </div>
             </div>
+          </div>
+
+          {/* Contact form */}
+          <div className="mt-8">
+            <form onSubmit={handleSubmit} className="card p-8">
+              <h3 className="font-display text-xl font-bold text-wood-700">
+                Gửi tin nhắn cho chúng tôi
+              </h3>
+              <p className="mt-2 text-sm text-ink-500">
+                Điền thông tin và bấm gửi — ứng dụng email trên máy của bạn sẽ mở sẵn nội dung gửi đến {CONTACT.email}.
+              </p>
+              <div className="mt-6 space-y-5">
+                <div>
+                  <label className="text-sm font-semibold text-ink-700">
+                    Họ và tên
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="Nguyễn Văn A"
+                    className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-semibold text-ink-700">
+                    Email của bạn
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    placeholder="email@example.com"
+                    className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-semibold text-ink-700">
+                    Nội dung
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Nhập câu hỏi hoặc tin nhắn của bạn..."
+                    className="mt-2 w-full resize-none rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
+                  />
+                </div>
+                <button type="submit" className="btn-eco w-full">
+                  <Send className="h-4 w-4" />
+                  Gửi tin nhắn
+                </button>
+                {sent && (
+                  <div className="animate-fadeIn rounded-2xl bg-eco-100 px-4 py-3 text-center text-sm font-semibold text-eco-700">
+                    Cảm ơn bạn! Ứng dụng email đã được mở để bạn hoàn tất việc gửi đến {CONTACT.email}.
+                  </div>
+                )}
+              </div>
+            </form>
           </div>
         </div>
       </section>
