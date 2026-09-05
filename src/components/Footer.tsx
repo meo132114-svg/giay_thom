@@ -20,7 +20,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3">
               <div className="h-12 w-12 overflow-hidden rounded-full bg-cream-50 shadow-soft">
-                <img src="/logo.jpg" alt="Logo Giày Thơm" className="h-full w-full object-contain" />
+                <img src="/logo.jpg" alt="Logo Giày Thơm" className="h-full w-full scale-125 object-contain" />
               </div>
               <div>
                 <div className="font-display text-lg font-bold tracking-tight">
