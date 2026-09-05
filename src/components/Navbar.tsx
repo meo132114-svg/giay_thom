@@ -36,7 +36,9 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
             className="group flex items-center gap-3"
             aria-label="Giày Thơm - Trang chủ"
           >
-            <div className="h-12 w-12 overflow-hidden rounded-full bg-cream-50 shadow-soft"> <img src="/logo.jpg" alt="Logo Giày Thơm" className="h-full w-full scale-90 object-contain" /> </div>
+            <div className="h-12 w-12 overflow-hidden rounded-full bg-cream-50 shadow-soft">
+  <img src="/logo.jpg" alt="Logo Giày Thơm" className="h-full w-full scale-125 object-contain" />
+</div>
             <div className="text-left">
               <div className="font-display text-lg font-bold leading-none tracking-tight text-wood-700">
                 GIÀY THƠM
