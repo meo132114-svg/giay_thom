@@ -41,12 +41,9 @@ export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
         'service_7qd4nwj',
         'template_22cfwif',
         {
-          name: form.name,
-          email: form.email,
-          from_name: form.name,     // Dự phòng cho template EmailJS dùng biến from_name
-          from_email: form.email,   // Dự phòng cho template EmailJS dùng biến from_email
-          reply_to: form.email,
-          message: form.message,
+          name: form.name,       // Khớp với {{name}} ở From Name
+          email: form.email,     // Khớp với {{email}} ở Reply To
+          message: form.message, // Nội dung tin nhắn trong template của bạn
         },
         'rW6uH1LsvWwYAfhdJ'
       );
@@ -59,7 +56,6 @@ export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
       setSending(false);
     }
   };
-
   return (
     <div className="animate-fadeIn">
       {/* Hero */}
