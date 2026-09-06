@@ -46,7 +46,7 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
           from_email: form.email,
           reply_to: form.email,
           message: form.message,
-          to_email: CONTACT.email,
+          to_email: 'giaythom2026@gmail.com',
         },
         { publicKey: '_20psvaVwSAGks-8x' }
       );
