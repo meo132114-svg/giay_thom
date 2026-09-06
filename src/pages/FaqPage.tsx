@@ -12,12 +12,19 @@ import {
 } from 'lucide-react';
 import { FAQS, CONTACT, type PageId } from '@/content';
 import SectionHeading from '@/components/SectionHeading';
+import PageNav from '@/components/PageNav';
 
 type FaqPageProps = {
   onNavigate: (page: PageId) => void;
 };
 
-export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.73 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43V8.69a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.12z" />
+  </svg>
+);
+
+export default function FaqPage({ onNavigate }: FaqPageProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sending, setSending] = useState(false);
@@ -35,16 +42,17 @@ export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
         'service_7qd4nwj',
         'template_22cfwif',
         {
-          name: form.name,
-          email: form.email,
-          message: form.message
+          from_name: form.name,
+          from_email: form.email,
+          reply_to: form.email,
+          message: form.message,
+          to_email: 'giaythom2026@gmail.com',
         },
-        'rW6uH1LsvWwYAfhdJ'
+        { publicKey: 'rW6uH1LsvWwYAfhdJ' }
       );
       setForm({ name: '', email: '', message: '' });
       setFeedback('success');
-    } catch (error) {
-      console.error("Lỗi gửi mail:", error);
+    } catch {
       setFeedback('error');
     } finally {
       setSending(false);
@@ -65,8 +73,7 @@ export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
             FAQ & Liên hệ
           </h1>
           <p className="mt-6 animate-fadeInUp text-lg leading-relaxed text-ink-600 text-balance" style={{ animationDelay: '0.2s' }}>
-            Bạn có thắc mắc? Chúng tôi ở đây để giúp. Dưới đây là những câu hỏi
-            thường gặp nhất và thông tin liên hệ trực tiếp với Giày Thơm.
+            Bạn có thắc mắc? Chúng tôi ở đây để giúp. Dưới đây là những câu hỏi thường gặp nhất và thông tin liên hệ trực tiếp với Giày Thơm.
           </p>
         </div>
       </section>
@@ -80,9 +87,7 @@ export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
               return (
                 <div
                   key={i}
-                  className={`card overflow-hidden transition-all ${
-                    isOpen ? 'shadow-card' : ''
-                  }`}
+                  className={`card overflow-hidden transition-all ${isOpen ? 'shadow-card' : ''}`}
                 >
                   <button
                     onClick={() => setOpenIdx(isOpen ? null : i)}
@@ -93,9 +98,7 @@ export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
                     </span>
                     <div
                       className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
-                        isOpen
-                          ? 'bg-eco-500 text-white rotate-180'
-                          : 'bg-cream-200 text-wood-600'
+                        isOpen ? 'bg-eco-500 text-white rotate-180' : 'bg-cream-200 text-wood-600'
                       }`}
                     >
                       <ChevronDown className="h-4 w-4" />
@@ -164,91 +167,59 @@ export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
               </div>
             </div>
 
-            {/* Social media & Form */}
-            <div className="space-y-6">
-              <div className="card p-8">
-                <h3 className="font-display text-xl font-bold text-wood-700">
-                  Mạng xã hội
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-500">
-                  Theo dõi Giày Thơm trên các nền tảng mạng xã hội.
-                </p>
-                <div className="mt-6 flex gap-4">
-                  <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1877F2] text-white transition-transform hover:-translate-y-0.5">
+            {/* Social media */}
+            <div className="card h-full p-8">
+              <h3 className="font-display text-xl font-bold text-wood-700">
+                Mạng xã hội
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-500">
+                Theo dõi Giày Thơm trên các nền tảng mạng xã hội để cập nhật sản phẩm mới và ưu đãi hấp dẫn.
+              </p>
+              <div className="mt-6 flex flex-col gap-4">
+                <a
+                  href={CONTACT.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 rounded-2xl bg-cream-100 p-4 transition-all hover:bg-cream-200 hover:-translate-y-0.5"
+                >
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-[#1877F2] text-white">
                     <Facebook className="h-6 w-6" />
-                  </a>
-                  <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#FFB13B] via-[#DD2A7B] to-[#8134AF] text-white transition-transform hover:-translate-y-0.5">
-                    <Instagram className="h-6 w-6" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Contact form */}
-              <div className="card p-8">
-                <form onSubmit={handleSubmit}>
-                  <h3 className="font-display text-xl font-bold text-wood-700">
-                    Gửi tin nhắn cho chúng tôi
-                  </h3>
-                  <div className="mt-6 space-y-5">
-                    <div>
-                      <label className="text-sm font-semibold text-ink-700">Họ và tên</label>
-                      <input
-                        type="text"
-                        required
-                        value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        placeholder="Nguyễn Văn A"
-                        className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-sm font-semibold text-ink-700">Email của bạn</label>
-                      <input
-                        type="email"
-                        required
-                        value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        placeholder="email@example.com"
-                        className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-sm font-semibold text-ink-700">Nội dung tin nhắn</label>
-                      <textarea
-                        required
-                        rows={4}
-                        value={form.message}
-                        onChange={(e) => setForm({ ...form, message: e.target.value })}
-                        placeholder="Nhập nội dung bạn cần hỗ trợ..."
-                        className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      disabled={sending}
-                      className="flex w-full items-center justify-center gap-2 rounded-2xl bg-wood-700 px-6 py-3 font-semibold text-white transition-all hover:bg-wood-800 disabled:opacity-50"
-                    >
-                      {sending ? 'Đang gửi...' : 'Gửi tin nhắn'}
-                      <Send className="h-4 w-4" />
-                    </button>
-
-                    {feedback === 'success' && (
-                      <p className="text-sm text-green-600 text-center font-medium">
-                        Tin nhắn của bạn đã được gửi thành công! Chúng tôi sẽ phản hồi sớm.
-                      </p>
-                    )}
-                    {feedback === 'error' && (
-                      <p className="text-sm text-red-600 text-center font-medium">
-                        Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.
-                      </p>
-                    )}
                   </div>
-                </form>
+                  <span className="font-semibold text-ink-800">Facebook</span>
+                </a>
+                <a
+                  href={CONTACT.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 rounded-2xl bg-cream-100 p-4 transition-all hover:bg-cream-200 hover:-translate-y-0.5"
+                >
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#FFB13B] via-[#DD2A7B] to-[#8134AF] text-white">
+                    <Instagram className="h-6 w-6" />
+                  </div>
+                  <span className="font-semibold text-ink-800">Instagram</span>
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 rounded-2xl bg-cream-100 p-4 transition-all hover:bg-cream-200 hover:-translate-y-0.5"
+                >
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-ink-900 text-white">
+                    <TikTokIcon className="h-6 w-6" />
+                  </div>
+                  <span className="font-semibold text-ink-800">TikTok</span>
+                </a>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+
+          {/* Contact form */}
+          <div className="mt-8">
+            <form onSubmit={handleSubmit} className="card p-8">
+              <h3 className="font-display text-xl font-bold text-wood-700">
+                Gửi tin nhắn cho chúng tôi
+              </h3>
+              <p className="mt-2 text-sm text-ink-500">
+                Điền thông tin và bấm gửi — tin nhắn sẽ được chuyển thẳng đến {CONTACT.email}.
+              </p>
+              <div className="mt-6 space-y-5">
