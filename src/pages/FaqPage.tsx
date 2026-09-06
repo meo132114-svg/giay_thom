@@ -42,23 +42,22 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
         'service_7qd4nwj',
         'template_22cfwif',
         {
-          from_name: form.name,
-          from_email: form.email,
-          reply_to: form.email,
-          message: form.message,
-          to_email: 'giaythom2026@gmail.com',
+          name: form.name,       // Đã sửa thành 'name' để khớp 100% với ảnh Template của bạn
+          email: form.email,     // Đã sửa thành 'email' để khớp 100% với ảnh Template của bạn
+          message: form.message
         },
-        { publicKey: 'rW6uH1LsvWwYAfhdJ' }
+        'rW6uH1LsvWwYAfhdJ'      // Đã sửa: Bỏ dấu ngoặc nhọn lỗi của Bolt để hết sạch lỗi 404
       );
       setForm({ name: '', email: '', message: '' });
       setFeedback('success');
-    } catch {
+    } catch (error) {
+      console.error("Lỗi gửi mail:", error);
       setFeedback('error');
     } finally {
       setSending(false);
     }
   };
-
+  
   return (
     <div className="animate-fadeIn">
       {/* Hero */}
