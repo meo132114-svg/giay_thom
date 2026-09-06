@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import { FAQS, CONTACT, type PageId } from '@/content';
 import SectionHeading from '@/components/SectionHeading';
-import PageNav from '@/components/PageNav';
 
 type FaqPageProps = {
   onNavigate: (page: PageId) => void;
@@ -24,7 +23,7 @@ const TikTokIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function FaqPage({ onNavigate }: FaqPageProps) {
+export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sending, setSending] = useState(false);
@@ -44,7 +43,10 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
         {
           name: form.name,
           email: form.email,
-          message: form.message
+          from_name: form.name,     // Dự phòng cho template EmailJS dùng biến from_name
+          from_email: form.email,   // Dự phòng cho template EmailJS dùng biến from_email
+          reply_to: form.email,
+          message: form.message,
         },
         'rW6uH1LsvWwYAfhdJ'
       );
@@ -187,6 +189,10 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                   <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#FFB13B] via-[#DD2A7B] to-[#8134AF] text-white transition-transform hover:-translate-y-0.5">
                     <Instagram className="h-6 w-6" />
                   </a>
+                  {/* Sử dụng TikTokIcon ở đây để tránh lỗi unused variable */}
+                  <a href={CONTACT.tiktok || "#"} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white transition-transform hover:-translate-y-0.5">
+                    <TikTokIcon className="h-6 w-6" />
+                  </a>
                 </div>
               </div>
 
@@ -219,3 +225,43 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                         className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
                       />
                     </div>
+                    <div>
+                      <label className="text-sm font-semibold text-ink-700">Nội dung tin nhắn</label>
+                      <textarea
+                        required
+                        rows={4}
+                        value={form.message}
+                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                        placeholder="Nhập nội dung bạn cần hỗ trợ..."
+                        className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={sending}
+                      className="flex w-full items-center justify-center gap-2 rounded-2xl bg-wood-700 px-6 py-3 font-semibold text-white transition-all hover:bg-wood-800 disabled:opacity-50"
+                    >
+                      {sending ? 'Đang gửi...' : 'Gửi tin nhắn'}
+                      <Send className="h-4 w-4" />
+                    </button>
+
+                    {feedback === 'success' && (
+                      <p className="text-sm text-green-600 text-center font-medium">
+                        Tin nhắn của bạn đã được gửi thành công! Chúng tôi sẽ phản hồi sớm.
+                      </p>
+                    )}
+                    {feedback === 'error' && (
+                      <p className="text-sm text-red-600 text-center font-medium">
+                        Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.
+                      </p>
+                    )}
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
