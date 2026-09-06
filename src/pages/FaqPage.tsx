@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import {
   ChevronDown,
   Mail,
@@ -37,24 +38,18 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
     setFeedback(null);
 
     try {
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          service_id: 'service_7qd4nwj',
-          template_id: 'template_4v42z6g',
-          user_id: '_20psvaVwSAGks-8x',
-          template_params: {
-            from_name: form.name,
-            from_email: form.email,
-            reply_to: form.email,
-            message: form.message,
-            to_email: CONTACT.email,
-          },
-        }),
-      });
-
-      if (!response.ok) throw new Error('Email could not be sent');
+      await emailjs.send(
+        'service_7qd4nwj',
+        'template_4v42z6g',
+        {
+          from_name: form.name,
+          from_email: form.email,
+          reply_to: form.email,
+          message: form.message,
+          to_email: CONTACT.email,
+        },
+        { publicKey: '_20psvaVwSAGks-8x' }
+      );
       setForm({ name: '', email: '', message: '' });
       setFeedback('success');
     } catch {
