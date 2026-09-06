@@ -40,7 +40,7 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
     try {
       await emailjs.send(
         'service_7qd4nwj',
-        'template_22cfwif',
+        'template_4v42z6g',
         {
           from_name: form.name,
           from_email: form.email,
@@ -48,7 +48,7 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
           message: form.message,
           to_email: 'giaythom2026@gmail.com',
         },
-        { publicKey: 'rW6uH1LsvWwYAfhdJ' }
+        { publicKey: '_20psvaVwSAGks-8x' }
       );
       setForm({ name: '', email: '', message: '' });
       setFeedback('success');
@@ -73,7 +73,8 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
             FAQ & Liên hệ
           </h1>
           <p className="mt-6 animate-fadeInUp text-lg leading-relaxed text-ink-600 text-balance" style={{ animationDelay: '0.2s' }}>
-            Bạn có thắc mắc? Chúng tôi ở đây để giúp. Dưới đây là những câu hỏi thường gặp nhất và thông tin liên hệ trực tiếp với Giày Thơm.
+            Bạn có thắc mắc? Chúng tôi ở đây để giúp. Dưới đây là những câu hỏi
+            thường gặp nhất và thông tin liên hệ trực tiếp với Giày Thơm.
           </p>
         </div>
       </section>
@@ -87,7 +88,9 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
               return (
                 <div
                   key={i}
-                  className={`card overflow-hidden transition-all ${isOpen ? 'shadow-card' : ''}`}
+                  className={`card overflow-hidden transition-all ${
+                    isOpen ? 'shadow-card' : ''
+                  }`}
                 >
                   <button
                     onClick={() => setOpenIdx(isOpen ? null : i)}
@@ -98,7 +101,9 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                     </span>
                     <div
                       className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
-                        isOpen ? 'bg-eco-500 text-white rotate-180' : 'bg-cream-200 text-wood-600'
+                        isOpen
+                          ? 'bg-eco-500 text-white rotate-180'
+                          : 'bg-cream-200 text-wood-600'
                       }`}
                     >
                       <ChevronDown className="h-4 w-4" />
@@ -173,7 +178,8 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                 Mạng xã hội
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-500">
-                Theo dõi Giày Thơm trên các nền tảng mạng xã hội để cập nhật sản phẩm mới và ưu đãi hấp dẫn.
+                Theo dõi Giày Thơm trên các nền tảng mạng xã hội để cập nhật
+                sản phẩm mới và ưu đãi hấp dẫn.
               </p>
               <div className="mt-6 flex flex-col gap-4">
                 <a
@@ -185,21 +191,13 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                   <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-[#1877F2] text-white">
                     <Facebook className="h-6 w-6" />
                   </div>
-                  <span className="font-semibold text-ink-800">Facebook</span>
-                </a>
-                <a
-                  href={CONTACT.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 rounded-2xl bg-cream-100 p-4 transition-all hover:bg-cream-200 hover:-translate-y-0.5"
-                >
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#FFB13B] via-[#DD2A7B] to-[#8134AF] text-white">
-                    <Instagram className="h-6 w-6" />
+                  <div>
+                    <div className="font-display text-base font-bold text-wood-700">Facebook</div>
+                    <div className="text-sm text-ink-500">facebook.com/giaythom</div>
                   </div>
-                  <span className="font-semibold text-ink-800">Instagram</span>
                 </a>
                 <a
-                  href="#"
+                  href={CONTACT.tiktok}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 rounded-2xl bg-cream-100 p-4 transition-all hover:bg-cream-200 hover:-translate-y-0.5"
@@ -207,7 +205,24 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                   <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-ink-900 text-white">
                     <TikTokIcon className="h-6 w-6" />
                   </div>
-                  <span className="font-semibold text-ink-800">TikTok</span>
+                  <div>
+                    <div className="font-display text-base font-bold text-wood-700">TikTok</div>
+                    <div className="text-sm text-ink-500">tiktok.com/@thaythomtho</div>
+                  </div>
+                </a>
+                <a
+                  href={CONTACT.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 rounded-2xl bg-cream-100 p-4 transition-all hover:bg-cream-200 hover:-translate-y-0.5"
+                >
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white">
+                    <Instagram className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="font-display text-base font-bold text-wood-700">Instagram</div>
+                    <div className="text-sm text-ink-500">instagram.com/giaythom</div>
+                  </div>
                 </a>
               </div>
             </div>
@@ -223,3 +238,66 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                 Điền thông tin và bấm gửi — tin nhắn sẽ được chuyển thẳng đến {CONTACT.email}.
               </p>
               <div className="mt-6 space-y-5">
+                <div>
+                  <label className="text-sm font-semibold text-ink-700">
+                    Họ và tên
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="Nguyễn Văn A"
+                    className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-semibold text-ink-700">
+                    Email của bạn
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    placeholder="email@example.com"
+                    className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-semibold text-ink-700">
+                    Nội dung
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Nhập câu hỏi hoặc tin nhắn của bạn..."
+                    className="mt-2 w-full resize-none rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
+                  />
+                </div>
+                <button type="submit" disabled={sending} className="btn-eco w-full disabled:cursor-not-allowed disabled:opacity-60">
+                  <Send className="h-4 w-4" />
+                  {sending ? 'Đang gửi...' : 'Gửi tin nhắn'}
+                </button>
+                {feedback === 'success' && (
+                  <div className="animate-fadeIn rounded-2xl bg-eco-100 px-4 py-3 text-center text-sm font-semibold text-eco-700">
+                    Tin nhắn đã được gửi đến {CONTACT.email}. Chúng tôi sẽ phản hồi sớm.
+                  </div>
+                )}
+                {feedback === 'error' && (
+                  <div className="animate-fadeIn rounded-2xl bg-red-50 px-4 py-3 text-center text-sm font-semibold text-red-700">
+                    Không thể gửi tin nhắn lúc này. Vui lòng thử lại sau.
+                  </div>
+                )}
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <PageNav current="faq" onNavigate={onNavigate} />
+    </div>
+  );
+}
