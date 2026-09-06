@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import emailjs from '@emailjs/browser';
 import {
   ChevronDown,
   Mail,
@@ -27,36 +26,23 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 export default function FaqPage({ onNavigate }: FaqPageProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sending, setSending] = useState(false);
-  const [feedback, setFeedback] = useState<'success' | 'error' | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message || sending) return;
+    if (!form.name || !form.email || !form.message) return;
 
-    setSending(true);
-    setFeedback(null);
+    // Email nhận (thay bằng CONTACT.email nếu muốn dùng chung cấu hình)
+    const toEmail = 'giaythom2026@gmail.com'; 
+    const subject = encodeURIComponent(`Liên hệ từ khách hàng: ${form.name}`);
+    const body = encodeURIComponent(
+      `${form.message}\n\n---\nThông tin liên hệ:\nHọ và tên: ${form.name}\nEmail: ${form.email}`
+    );
 
-    try {
-      await emailjs.send(
-        'service_7qd4nwj',
-        'template_4v42z6g',
-        {
-          from_name: form.name,
-          from_email: form.email,
-          reply_to: form.email,
-          message: form.message,
-          to_email: 'giaythom2026@gmail.com',
-        },
-        { publicKey: '_20psvaVwSAGks-8x' }
-      );
-      setForm({ name: '', email: '', message: '' });
-      setFeedback('success');
-    } catch {
-      setFeedback('error');
-    } finally {
-      setSending(false);
-    }
+    // Mở ứng dụng mail mặc định
+    window.location.href = `mailto:${toEmail}?subject=${subject}&body=${body}`;
+    
+    // Tuỳ chọn: Xoá form sau khi bấm gửi
+    // setForm({ name: '', email: '', message: '' });
   };
 
   return (
@@ -235,7 +221,7 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                 Gửi tin nhắn cho chúng tôi
               </h3>
               <p className="mt-2 text-sm text-ink-500">
-                Điền thông tin và bấm gửi — tin nhắn sẽ được chuyển thẳng đến {CONTACT.email}.
+                Điền thông tin và hệ thống sẽ mở ứng dụng email của bạn để gửi tới {CONTACT.email}.
               </p>
               <div className="mt-6 space-y-5">
                 <div>
@@ -277,20 +263,10 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
                     className="mt-2 w-full resize-none rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
                   />
                 </div>
-                <button type="submit" disabled={sending} className="btn-eco w-full disabled:cursor-not-allowed disabled:opacity-60">
+                <button type="submit" className="btn-eco w-full">
                   <Send className="h-4 w-4" />
-                  {sending ? 'Đang gửi...' : 'Gửi tin nhắn'}
+                  Gửi qua ứng dụng Mail
                 </button>
-                {feedback === 'success' && (
-                  <div className="animate-fadeIn rounded-2xl bg-eco-100 px-4 py-3 text-center text-sm font-semibold text-eco-700">
-                    Tin nhắn đã được gửi đến {CONTACT.email}. Chúng tôi sẽ phản hồi sớm.
-                  </div>
-                )}
-                {feedback === 'error' && (
-                  <div className="animate-fadeIn rounded-2xl bg-red-50 px-4 py-3 text-center text-sm font-semibold text-red-700">
-                    Không thể gửi tin nhắn lúc này. Vui lòng thử lại sau.
-                  </div>
-                )}
               </div>
             </form>
           </div>
