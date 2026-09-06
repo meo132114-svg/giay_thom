@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { FAQS, CONTACT, type PageId } from '@/content';
 import SectionHeading from '@/components/SectionHeading';
+import PageNav from '@/components/PageNav';
 
 type FaqPageProps = {
   onNavigate: (page: PageId) => void;
@@ -23,7 +24,7 @@ const TikTokIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
+export default function FaqPage({ onNavigate }: FaqPageProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sending, setSending] = useState(false);
@@ -41,9 +42,9 @@ export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
         'service_7qd4nwj',
         'template_22cfwif',
         {
-          name: form.name,       // Khớp với {{name}} ở From Name
-          email: form.email,     // Khớp với {{email}} ở Reply To
-          message: form.message, // Nội dung tin nhắn trong template của bạn
+          name: form.name,
+          email: form.email,
+          message: form.message
         },
         'rW6uH1LsvWwYAfhdJ'
       );
@@ -56,6 +57,7 @@ export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
       setSending(false);
     }
   };
+
   return (
     <div className="animate-fadeIn">
       {/* Hero */}
@@ -184,10 +186,6 @@ export default function FaqPage({ onNavigate: _onNavigate }: FaqPageProps) {
                   </a>
                   <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#FFB13B] via-[#DD2A7B] to-[#8134AF] text-white transition-transform hover:-translate-y-0.5">
                     <Instagram className="h-6 w-6" />
-                  </a>
-                  {/* Sử dụng TikTokIcon ở đây để tránh lỗi unused variable */}
-                  <a href={CONTACT.tiktok || "#"} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white transition-transform hover:-translate-y-0.5">
-                    <TikTokIcon className="h-6 w-6" />
                   </a>
                 </div>
               </div>
