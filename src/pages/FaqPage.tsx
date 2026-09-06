@@ -40,7 +40,7 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
     try {
       await emailjs.send(
         'service_7qd4nwj',
-        'template_4v42z6g',
+        'template_22cfwif',
         {
           from_name: form.name,
           from_email: form.email,
@@ -48,7 +48,7 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
           message: form.message,
           to_email: 'giaythom2026@gmail.com',
         },
-        { publicKey: '_20psvaVwSAGks-8x' }
+        { publicKey: 'rW6uH1LsvWwYAfhdJ' }
       );
       setForm({ name: '', email: '', message: '' });
       setFeedback('success');
