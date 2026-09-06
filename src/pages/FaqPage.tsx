@@ -42,11 +42,11 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
         'service_7qd4nwj',
         'template_22cfwif',
         {
-          name: form.name,       // Đã sửa thành 'name' để khớp 100% với ảnh Template của bạn
-          email: form.email,     // Đã sửa thành 'email' để khớp 100% với ảnh Template của bạn
+          name: form.name,
+          email: form.email,
           message: form.message
         },
-        'rW6uH1LsvWwYAfhdJ'      // Đã sửa: Bỏ dấu ngoặc nhọn lỗi của Bolt để hết sạch lỗi 404
+        'rW6uH1LsvWwYAfhdJ'
       );
       setForm({ name: '', email: '', message: '' });
       setFeedback('success');
@@ -57,7 +57,7 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
       setSending(false);
     }
   };
-  
+
   return (
     <div className="animate-fadeIn">
       {/* Hero */}
@@ -171,132 +171,51 @@ export default function FaqPage({ onNavigate }: FaqPageProps) {
               </div>
             </div>
 
-            {/* Social media */}
-            <div className="card h-full p-8">
-              <h3 className="font-display text-xl font-bold text-wood-700">
-                Mạng xã hội
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-500">
-                Theo dõi Giày Thơm trên các nền tảng mạng xã hội để cập nhật
-                sản phẩm mới và ưu đãi hấp dẫn.
-              </p>
-              <div className="mt-6 flex flex-col gap-4">
-                <a
-                  href={CONTACT.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 rounded-2xl bg-cream-100 p-4 transition-all hover:bg-cream-200 hover:-translate-y-0.5"
-                >
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-[#1877F2] text-white">
+            {/* Social media & Form */}
+            <div className="space-y-6">
+              <div className="card p-8">
+                <h3 className="font-display text-xl font-bold text-wood-700">
+                  Mạng xã hội
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-500">
+                  Theo dõi Giày Thơm trên các nền tảng mạng xã hội.
+                </p>
+                <div className="mt-6 flex gap-4">
+                  <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1877F2] text-white transition-transform hover:-translate-y-0.5">
                     <Facebook className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <div className="font-display text-base font-bold text-wood-700">Facebook</div>
-                    <div className="text-sm text-ink-500">facebook.com/giaythom</div>
-                  </div>
-                </a>
-                <a
-                  href={CONTACT.tiktok}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 rounded-2xl bg-cream-100 p-4 transition-all hover:bg-cream-200 hover:-translate-y-0.5"
-                >
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-ink-900 text-white">
-                    <TikTokIcon className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <div className="font-display text-base font-bold text-wood-700">TikTok</div>
-                    <div className="text-sm text-ink-500">tiktok.com/@thaythomtho</div>
-                  </div>
-                </a>
-                <a
-                  href={CONTACT.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 rounded-2xl bg-cream-100 p-4 transition-all hover:bg-cream-200 hover:-translate-y-0.5"
-                >
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white">
+                  </a>
+                  <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#FFB13B] via-[#DD2A7B] to-[#8134AF] text-white transition-transform hover:-translate-y-0.5">
                     <Instagram className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <div className="font-display text-base font-bold text-wood-700">Instagram</div>
-                    <div className="text-sm text-ink-500">instagram.com/giaythom</div>
-                  </div>
-                </a>
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
 
-          {/* Contact form */}
-          <div className="mt-8">
-            <form onSubmit={handleSubmit} className="card p-8">
-              <h3 className="font-display text-xl font-bold text-wood-700">
-                Gửi tin nhắn cho chúng tôi
-              </h3>
-              <p className="mt-2 text-sm text-ink-500">
-                Điền thông tin và bấm gửi — tin nhắn sẽ được chuyển thẳng đến {CONTACT.email}.
-              </p>
-              <div className="mt-6 space-y-5">
-                <div>
-                  <label className="text-sm font-semibold text-ink-700">
-                    Họ và tên
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="Nguyễn Văn A"
-                    className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-semibold text-ink-700">
-                    Email của bạn
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    placeholder="email@example.com"
-                    className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-semibold text-ink-700">
-                    Nội dung
-                  </label>
-                  <textarea
-                    required
-                    rows={4}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Nhập câu hỏi hoặc tin nhắn của bạn..."
-                    className="mt-2 w-full resize-none rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
-                  />
-                </div>
-                <button type="submit" disabled={sending} className="btn-eco w-full disabled:cursor-not-allowed disabled:opacity-60">
-                  <Send className="h-4 w-4" />
-                  {sending ? 'Đang gửi...' : 'Gửi tin nhắn'}
-                </button>
-                {feedback === 'success' && (
-                  <div className="animate-fadeIn rounded-2xl bg-eco-100 px-4 py-3 text-center text-sm font-semibold text-eco-700">
-                    Tin nhắn đã được gửi đến {CONTACT.email}. Chúng tôi sẽ phản hồi sớm.
-                  </div>
-                )}
-                {feedback === 'error' && (
-                  <div className="animate-fadeIn rounded-2xl bg-red-50 px-4 py-3 text-center text-sm font-semibold text-red-700">
-                    Không thể gửi tin nhắn lúc này. Vui lòng thử lại sau.
-                  </div>
-                )}
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <PageNav current="faq" onNavigate={onNavigate} />
-    </div>
-  );
-}
+              {/* Contact form */}
+              <div className="card p-8">
+                <form onSubmit={handleSubmit}>
+                  <h3 className="font-display text-xl font-bold text-wood-700">
+                    Gửi tin nhắn cho chúng tôi
+                  </h3>
+                  <div className="mt-6 space-y-5">
+                    <div>
+                      <label className="text-sm font-semibold text-ink-700">Họ và tên</label>
+                      <input
+                        type="text"
+                        required
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        placeholder="Nguyễn Văn A"
+                        className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm font-semibold text-ink-700">Email của bạn</label>
+                      <input
+                        type="email"
+                        required
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        placeholder="email@example.com"
+                        className="mt-2 w-full rounded-2xl border border-cream-300 bg-cream-50 px-4 py-3 text-ink-800 outline-none transition-all focus:border-wood-400 focus:ring-2 focus:ring-wood-200"
+                      />
+                    </div>
