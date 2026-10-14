@@ -68,19 +68,6 @@ export default function StoryPage({ onNavigate }: StoryPageProps) {
         </div>
       </section>
 
-     {/* Story image */}
-<section className="pb-16">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6">
-    <div className="mx-auto max-w-2xl overflow-hidden rounded-5xl bg-white shadow-card animate-scaleIn">
-      <img
-        src="/than.jpg"
-        alt="Than hoạt tính tự nhiên"
-        className="block h-auto w-full object-contain"
-        loading="lazy"
-      />
-    </div>
-  </div>
-</section>
       {/* Mission & Vision */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
