@@ -8,7 +8,6 @@ import {
   Droplets,
   RefreshCw,
   Package,
-  Sun,
 } from 'lucide-react';
 import { IMAGES, BENEFITS, type PageId } from '@/content';
 import SectionHeading from '@/components/SectionHeading';
@@ -130,8 +129,8 @@ export default function BenefitsPage({ onNavigate }: BenefitsPageProps) {
                   },
                   {
                     step: '04',
-                    title: 'Phơi nắng tái sử dụng',
-                    desc: '2-3 tuần/lần, phơi nắng để tái hoạt hóa than hoạt tính.',
+                    title: 'Bảo quản nơi thoáng mát',
+                    desc: 'Đặt túi ở nơi thoáng mát để duy trì hiệu quả của than hoạt tính.',
                   },
                 ].map((s) => (
                   <div key={s.step} className="flex items-start gap-4">
@@ -158,17 +157,16 @@ export default function BenefitsPage({ onNavigate }: BenefitsPageProps) {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="order-2 lg:order-1">
               <span className="pill bg-eco-100 text-eco-700">
-                <Sun className="h-4 w-4" />
+                <Wind className="h-4 w-4" />
                 Tái sử dụng
               </span>
               <h2 className="mt-4 section-title text-3xl sm:text-4xl text-balance">
-                Phơi nắng — tái hoạt hóa đơn giản
+                Bảo quản nơi thoáng mát — sử dụng lâu dài
               </h2>
               <p className="mt-5 text-base leading-relaxed text-ink-600">
-                Không cần thay mới liên tục! Chỉ cần phơi túi thơm dưới ánh nắng
-                mặt trời 2-3 giờ, 2-3 tuần/lần. Nắng mặt trời giúp giải phóng ẩm
-                và tái hoạt hóa than hoạt tính, tiết kiệm và thân thiện môi
-                trường.
+                Không cần thay mới liên tục! Chỉ cần bảo quản túi thơm ở nơi
+                thoáng mát sau khi sử dụng để duy trì khả năng hút ẩm và khử mùi
+                của than hoạt tính, tiết kiệm và thân thiện môi trường.
               </p>
             </div>
             <div className="order-1 overflow-hidden rounded-5xl shadow-card lg:order-2">

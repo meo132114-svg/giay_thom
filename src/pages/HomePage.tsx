@@ -76,7 +76,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             <div className="relative animate-scaleIn">
               <div className="relative overflow-hidden rounded-5xl bg-cream-50 shadow-card">
                 <img
-                  src="/image.jpg"
+                  src="/home.jpg"
                   alt="Túi khử mùi giày Giày Thơm"
                   className="h-[420px] w-full object-contain lg:h-[520px]"
                   loading="eager"
@@ -119,7 +119,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             {[
               { value: '4', label: 'Mùi hương thiên nhiên' },
               { value: '100%', label: 'Nguyên liệu tự nhiên' },
-              { value: '2-3 tuần', label: 'Phơi nắng tái sử dụng' },
+              { value: 'Thoáng mát', label: 'Bảo quản túi thơm' },
               { value: '4 túi', label: 'Mỗi hộp đóng gói' },
             ].map((s) => (
               <div key={s.label} className="text-center">
@@ -141,7 +141,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             title="Những rắc rối khi mang giày kín"
             subtitle="Bạn có gặp những tình huống này? Giày Thơm ở đây để giải quyết."
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {PROBLEMS.map((p, i) => {
               const Icon = problemIcons[p.icon] || Frown;
               return (

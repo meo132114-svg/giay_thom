@@ -32,7 +32,7 @@ const features = [
   'Than hoạt tính hút ẩm, khử mùi tận gốc',
   'Tinh dầu thiên nhiên 100% nguyên chất',
   'Túi vải nhỏ gọn, dễ mang theo',
-  'Tái sử dụng nhiều tháng nhờ phơi nắng',
+  'Tái sử dụng nhiều tháng khi bảo quản nơi thoáng mát',
   'An toàn cho mọi chất liệu giày',
   'Mỗi hộp gồm 4 túi thơm',
 ];
@@ -71,10 +71,10 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
       {/* Cụm hình ảnh */}
       <div className="relative mx-auto w-full max-w-md lg:max-w-none">
         {/* 🎯 Khung tỉ lệ 3:4, nền trắng + object-contain để ảnh hiển thị trọn vẹn */}
-        <div className="aspect-[3/4] w-full overflow-hidden rounded-5xl bg-white shadow-card">
+        <div className="aspect-[4/3] w-full overflow-hidden rounded-5xl bg-white shadow-card">
           <img
-            src="/kichthuoc.jpg"
-            alt="Kích thước túi khử mùi Giày Thơm"
+            src="/size.jpg"
+            alt="Kích thước túi khử mùi giày thơm"
             className="h-full w-full object-contain p-2"
             loading="lazy"
           />

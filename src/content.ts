@@ -128,7 +128,7 @@ export const BENEFITS = [
   {
     icon: 'RefreshCw',
     title: 'Tái Sử Dụng Lâu Dài',
-    desc: 'Chỉ cần phơi nắng định kỳ 2-3 tuần/lần để giải phóng ẩm và tái hoạt hóa than hoạt tính.',
+    desc: 'Bảo quản túi ở nơi thoáng mát để duy trì hiệu quả sử dụng lâu dài.',
   },
   {
     icon: 'Package',
@@ -163,11 +163,6 @@ export const PROBLEMS = [
     title: 'Thiếu tự tin',
     desc: 'Mùi hôi giày khiến bạn thiếu tự tin khi giao tiếp hoặc tháo giày nơi đông người.',
   },
-  {
-    icon: 'AlertTriangle',
-    title: 'Hóa chất kích ứng',
-    desc: 'Bình xịt khử mùi hóa chất tạo mùi nồng gắt, dễ gây kích ứng hoặc hỏng chất liệu giày.',
-  },
 ];
 
 export const REVIEWS = [
@@ -194,7 +189,7 @@ export const REVIEWS = [
 export const FAQS = [
   {
     q: 'Một túi thơm Giày Thơm có thời gian sử dụng bao lâu?',
-    a: 'Tùy thuộc vào tần suất sử dụng và độ ẩm của giày. Khách hàng chỉ cần phơi nắng định kỳ 2-3 tuần/lần để tái sử dụng hiệu quả trong nhiều tháng.',
+    a: 'Tùy thuộc vào tần suất sử dụng và độ ẩm của giày. Khách hàng chỉ cần bảo quản túi ở nơi thoáng mát để tái sử dụng hiệu quả trong nhiều tháng.',
   },
   {
     q: 'Sản phẩm có dùng được cho giày đá bóng hoặc giày da không?',
@@ -209,8 +204,8 @@ export const FAQS = [
     a: 'Có thể đặt túi thơm vào tủ quần áo, balo, túi xách hoặc tủ giày để khử mùi ẩm mốc và duy trì không gian thơm tho.',
   },
   {
-    q: 'Cách phơi nắng tái sử dụng như thế nào?',
-    a: 'Đơn giản! Chỉ cần lấy túi thơm ra phơi dưới ánh nắng mặt trời 2-3 giờ, 2-3 tuần/lần. Nắng mặt trời giúp giải phóng ẩm và tái hoạt hóa than hoạt tính.',
+    q: 'Bảo quản túi thơm như thế nào?',
+    a: 'Sau khi sử dụng, đặt túi thơm ở nơi thoáng mát để giải phóng ẩm và duy trì hiệu quả của than hoạt tính.',
   },
   {
     q: 'Một hộp sản phẩm gồm những gì?',

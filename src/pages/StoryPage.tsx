@@ -35,7 +35,7 @@ const values = [
   { label: 'Chất lượng', desc: 'Sản phẩm được kiểm định kỹ lưỡng trước khi đến tay khách hàng.' },
   { label: 'An toàn', desc: '100% nguyên liệu tự nhiên, không chứa hóa chất độc hại.' },
   { label: 'Sáng tạo', desc: 'Kết hợp than hoạt tính và tinh dầu trong thiết kế tinh gọn.' },
-  { label: 'Bền vững', desc: 'Tái sử dụng lâu dài nhờ cơ chế phơi nắng đơn giản.' },
+  { label: 'Bền vững', desc: 'Tái sử dụng lâu dài khi bảo quản nơi thoáng mát.' },
   { label: 'Thân thiện môi trường', desc: 'Giảm thiểu rác thải, hướng tới lối sống xanh.' },
   { label: 'Tận tâm với khách hàng', desc: 'Lắng nghe và cải tiến không ngừng từ phản hồi thực tế.' },
 ];
@@ -72,11 +72,11 @@ export default function StoryPage({ onNavigate }: StoryPageProps) {
 <section className="pb-16">
   <div className="mx-auto max-w-7xl px-4 sm:px-6">
     {/* 🎯 Thay max-w-2xl thành max-w-4xl để khung 16:9 to bự hơn rõ rệt */}
-    <div className="mx-auto aspect-video max-w-4xl overflow-hidden rounded-5xl shadow-card animate-scaleIn">
+    <div className="mx-auto aspect-[4/3] max-w-4xl overflow-hidden rounded-5xl bg-white shadow-card animate-scaleIn">
       <img
-        src="/image2.png"
+        src="/than.jpg"
         alt="Than hoạt tính tự nhiên"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-contain"
         loading="lazy"
       />
     </div>
@@ -183,7 +183,7 @@ export default function StoryPage({ onNavigate }: StoryPageProps) {
           />
           <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {[
-              { img: "/image2.png", label: 'Than hoạt tính' },
+              { img: "/than.jpg", label: 'Than hoạt tính' },
               { img: "/tinhdau.jpg", label: 'Tinh thảo mộc' },
               { img: "/image3.jpg", label: 'Túi vải tự nhiên' },
               { img: "/donggoi.jpg", label: 'Đóng gói tối giản' },
@@ -196,7 +196,9 @@ export default function StoryPage({ onNavigate }: StoryPageProps) {
                   <img
                     src={g.img}
                     alt={g.label}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className={`h-full w-full transition-transform duration-700 group-hover:scale-110 ${
+                      g.img === '/than.jpg' ? 'object-contain bg-white' : 'object-cover'
+                    }`}
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-wood-900/50 to-transparent" />
