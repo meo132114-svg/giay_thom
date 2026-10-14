@@ -78,7 +78,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 <img
                   src="/home.jpg"
                   alt="Túi khử mùi giày Giày Thơm"
-                  className="h-[420px] w-full object-contain lg:h-[520px]"
+                  className="block h-auto w-full"
                   loading="eager"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-wood-900/30 via-transparent to-transparent" />

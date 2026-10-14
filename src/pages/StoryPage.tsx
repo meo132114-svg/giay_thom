@@ -71,12 +71,11 @@ export default function StoryPage({ onNavigate }: StoryPageProps) {
      {/* Story image */}
 <section className="pb-16">
   <div className="mx-auto max-w-7xl px-4 sm:px-6">
-    {/* 🎯 Thay max-w-2xl thành max-w-4xl để khung 16:9 to bự hơn rõ rệt */}
-    <div className="mx-auto aspect-[4/3] max-w-4xl overflow-hidden rounded-5xl bg-white shadow-card animate-scaleIn">
+    <div className="mx-auto max-w-2xl overflow-hidden rounded-5xl bg-white shadow-card animate-scaleIn">
       <img
         src="/than.jpg"
         alt="Than hoạt tính tự nhiên"
-        className="h-full w-full object-contain"
+        className="block h-auto w-full object-contain"
         loading="lazy"
       />
     </div>
