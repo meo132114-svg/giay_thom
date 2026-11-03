@@ -170,7 +170,7 @@ export default function StoryPage({ onNavigate }: StoryPageProps) {
           <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {[
               { img: "/than.jpg", label: 'Than hoạt tính' },
-              { img: "/tinhdau.jpg", label: 'Tinh thảo mộc' },
+              { img: "/1793701230986_3553943514824930866_3553943514824930866_286c7c3dbcb7ffda2202c48b9581b3f3.jpg", label: 'Tinh dầu thảo mộc' },
               { img: "/image3.jpg", label: 'Túi vải tự nhiên' },
               { img: "/donggoi.jpg", label: 'Đóng gói tối giản' },
             ].map((g) => (
