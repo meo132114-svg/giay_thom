@@ -186,7 +186,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Khách hàng nói gì"
-            title="Hàng ngàn đôi giày đã thơm tho"
+            title="Nhiều đôi giày đã thơm tho"
           />
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {[

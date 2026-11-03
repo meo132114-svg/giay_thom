@@ -50,7 +50,7 @@ export default function BenefitsPage({ onNavigate }: BenefitsPageProps) {
             className="mt-6 animate-fadeInUp text-lg leading-relaxed text-ink-600 text-balance"
             style={{ animationDelay: '0.2s' }}
           >
-            Tám công dụng nổi bật đã được hàng ngàn khách hàng kiểm chứng. Đôi
+            Tám công dụng nổi bật đã được nhiều khách hàng kiểm chứng. Đôi
             giày của bạn xứng đáng được nâng niu mỗi ngày.
           </p>
         </div>
